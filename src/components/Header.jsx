@@ -125,7 +125,9 @@ const Header = () => {
         align="center"
         p={{ base: 10, xxs: 20 }}
       >
-        <Image src="/Logo-Small.svg" alt="Logo" maw={250} miw={190} />
+        <NavLink className="no-style" to={"/"}>
+          <Image src="/Logo-Small.svg" alt="Logo" maw={250} miw={190} />
+        </NavLink>
         {nav}
       </Flex>
     </>

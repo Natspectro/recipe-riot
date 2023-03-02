@@ -6,3 +6,8 @@ a > div {
   padding: 0.6rem;
   border-radius: 10px;
 }
+
+.no-style > * {
+  padding: 0;
+  background-color: #fff !important;
+}
