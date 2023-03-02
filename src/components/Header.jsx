@@ -1,4 +1,13 @@
-import { Flex, Button, Image, Anchor, Text, Box, Menu } from "@mantine/core";
+import {
+  Flex,
+  Button,
+  Image,
+  Anchor,
+  Text,
+  Box,
+  Menu,
+  Group,
+} from "@mantine/core";
 import { NavLink } from "react-router-dom";
 import { useViewportSize } from "@mantine/hooks";
 import { Home, InfoCircle, Login, SquarePlus } from "tabler-icons-react";
@@ -6,28 +15,7 @@ import SignUp from "./SignUp";
 
 const Header = () => {
   const { height, width } = useViewportSize();
-  let nav = (
-    <Flex ml={"auto"} gap={"lg"} align="center">
-      <NavLink to="/" style={{ textDecoration: "none" }}>
-        <Text color={"brand"} weight={600}>
-          Home
-        </Text>
-      </NavLink>
-
-      <NavLink to="/about" style={{ textDecoration: "none" }}>
-        <Text color={"brand"} weight={600}>
-          About
-        </Text>
-      </NavLink>
-
-      <NavLink to="/add" style={{ textDecoration: "none" }}>
-        <Text color={"brand"} weight={600}>
-          Add
-        </Text>
-      </NavLink>
-      <Button>Login</Button>
-    </Flex>
-  );
+  let nav = <div></div>;
 
   if (width <= 590) {
     nav = (
@@ -100,19 +88,31 @@ const Header = () => {
     );
   } else {
     nav = (
-      <Flex ml={"auto"} gap={"lg"} align="center">
-        <NavLink to="/" style={{ textDecoration: "none" }}>
+      <Flex ml={"auto"} gap={"sm"} align="center">
+        <NavLink to="/" style={{ textDecoration: "none", width: "100%" }}>
           <Text color={"brand"} weight={600}>
             Home
           </Text>
         </NavLink>
 
-        <NavLink to="/about" style={{ textDecoration: "none" }}>
+        <NavLink to="/about" style={{ textDecoration: "none", width: "100%" }}>
           <Text color={"brand"} weight={600}>
             About
           </Text>
         </NavLink>
-        <Button>Login</Button>
+
+        <NavLink to="/add" style={{ textDecoration: "none" }}>
+          <Text color={"brand"} weight={600}>
+            Add
+          </Text>
+        </NavLink>
+        <NavLink to="/signin" style={{ textDecoration: "none", width: "100%" }}>
+          <Button variant="outline">
+            <Text color={"brand"} weight={600}>
+              Log-In
+            </Text>
+          </Button>
+        </NavLink>
       </Flex>
     );
   }
@@ -120,7 +120,7 @@ const Header = () => {
   return (
     <>
       <Flex
-        gap={{ base: "xs", xxs: "xl" }}
+        gap={0}
         justify="flex-start"
         align="center"
         p={{ base: 10, xxs: 20 }}

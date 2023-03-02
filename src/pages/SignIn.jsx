@@ -1,5 +1,4 @@
 import {
-  Modal,
   Button,
   TextInput,
   PasswordInput,
@@ -7,14 +6,16 @@ import {
   Stack,
   Text,
   Flex,
+  Title,
 } from "@mantine/core";
 import { auth } from "../config/firebase";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { signInWithEmailAndPassword } from "firebase/auth";
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { UserPlus } from "tabler-icons-react";
+import SignUp from "../components/SignUp";
 
-const SignUp = () => {
+const SignIn = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -24,16 +25,20 @@ const SignUp = () => {
   return (
     <Container size={"xs"}>
       <Stack spacing={"lg"}>
+        <Title order={3} color="brand.5">
+          Login
+        </Title>
         <TextInput
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          placeholder="Email"
+          placeholder="youremail@gmail.com"
           label="Email"
         />
         <PasswordInput
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          placeholder="Password"
+          placeholder="password123"
+          label="Password"
         />
         <Flex
           gap="md"
@@ -46,21 +51,11 @@ const SignUp = () => {
           <Text color={"brand"} weight={600} mx={0}>
             or
           </Text>
-          <NavLink
-            to="/"
-            style={{
-              textDecoration: "none",
-            }}
-          >
-            <Text component={Button} color={"brand.1"} weight={600}>
-              <UserPlus size={24} strokeWidth={2.5} color={"#FFFFFF"} />
-              <Text ml={10}>Create new Account</Text>
-            </Text>
-          </NavLink>
+          <SignUp />
         </Flex>
       </Stack>
     </Container>
   );
 };
 
-export default SignUp;
+export default SignIn;
